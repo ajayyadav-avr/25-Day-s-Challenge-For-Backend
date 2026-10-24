@@ -5,6 +5,10 @@ app.use(express.json())
 
 const notes = []
 
+app.get('/',(req,res)=>{
+    res.send("Hello User, Server is working!")
+})
+
 app.post("/notes",(req,res)=>{
     // console.log(req.body);
     notes.push(req.body)
