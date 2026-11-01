@@ -1,0 +1,28 @@
+1. Authentication
+=> register (1. user ka data save krna. 2. token user ko dena)
+=> Login
+=> logout (token blacklisting)
+=> [OTP based registration]
+
+2. post
+=> create
+=> can see the feed
+=> like posts (collection types)
+=> save post
+
+3. users
+=> followers
+=> following
+
+
+instDefaultPic = https://ik.imagekit.io/rdghcfvsf/85038f5657b515dae2f4f9f44c177500.jpg
+
+user={
+    userName = String,
+    email = String,
+    password = String,
+    bio = String,
+    profile_image = String
+}
+
+JWT_Secrets = 8978e9739ed77374de9824e99213347e4589cc3aaada1b9306c0a798cbe73bda
