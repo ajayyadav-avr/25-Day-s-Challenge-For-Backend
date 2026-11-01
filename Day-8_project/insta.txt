@@ -25,4 +25,11 @@ user={
     profile_image = String
 }
 
-JWT_Secrets = 8978e9739ed77374de9824e99213347e4589cc3aaada1b9306c0a798cbe73bda
+post = {
+    caption : String,
+    img_Url : String,
+    user : userId,
+    createdAt : Data-time
+}
+
+
