@@ -40,7 +40,7 @@ async function registerController (req, res){
   });
 
   // Generate a JWT authentication token for the newly registered user
-  const authToken = jwt.sign(
+  const token = jwt.sign(
     {
       id: newUser._id,
     },
@@ -48,7 +48,7 @@ async function registerController (req, res){
     { expiresIn: "1d" },
   );
   // Store the authentication token in a browser cookie
-  res.cookie("Token", authToken);
+  res.cookie("token", token);
 
   // Send the successful registration response
   res.status(201).json({
@@ -59,7 +59,7 @@ async function registerController (req, res){
       bio: newUser.bio,
       profile_image: newUser.profile_image,
     },
-    token: authToken,
+    token
   });
 }
 
@@ -87,7 +87,7 @@ async function loginController (req, res){
   }
 
   // Generate JWT
-  const authToken = jwt.sign(
+  const token = jwt.sign(
     {
       id: user._id,
     },
@@ -95,7 +95,7 @@ async function loginController (req, res){
     { expiresIn: "1d" },
   );
   // Set authentication cookie
-  res.cookie("Token", authToken);
+  res.cookie("token", token);
 
   // Send the successful login response
   res.status(200).json({
