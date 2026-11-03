@@ -2,8 +2,7 @@ const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-
-async function registerController (req, res){
+async function registerController(req, res) {
   // Extract user details from the request body
   const { userName, email, password, bio, profile_image } = req.body;
 
@@ -28,7 +27,7 @@ async function registerController (req, res){
   }
 
   // Hash the user's password before storing it in the database
-  const hashedPassword = await bcrypt.hash(password,10)
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   // Create a new user record in the database
   const newUser = await userModel.create({
@@ -59,18 +58,19 @@ async function registerController (req, res){
       bio: newUser.bio,
       profile_image: newUser.profile_image,
     },
-    token
+    token,
   });
 }
 
-async function loginController (req, res){
+async function loginController(req, res) {
   // Extract user details from the request body
-  const { userName , email, password } = req.body;
+  const { userName, email, password } = req.body;
 
   // Find user by email
   const user = await userModel.findOne({
-    $or:[{userName : userName},{email : email}]
-});
+    $or: [{ userName: userName }, { email: email }],
+  });
+
   if (!user) {
     return res.status(404).json({
       message: "User Not Found",
@@ -78,7 +78,7 @@ async function loginController (req, res){
   }
 
   // Compare entered password hash with stored hash
-  const isPasswordValid = await bcrypt.compare(password, user.password)
+  const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     return res.status(404).json({
@@ -108,8 +108,4 @@ async function loginController (req, res){
     },
   });
 }
-
-module.exports = {
-    registerController,
-    loginController
-}
+module.exports = { registerController, loginController };
