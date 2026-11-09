@@ -66,7 +66,12 @@ async function unfollowUserController(req, res) {
     })
 }
 
+async function statusUserController(req,res){
+
+}
+
 module.exports = {
   followUserController,
-  unfollowUserController
+  unfollowUserController,
+  statusUserController
 };
