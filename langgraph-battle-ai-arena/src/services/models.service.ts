@@ -14,7 +14,7 @@ export const cohereModel = new ChatCohere({
 })
 
 export const grogModel = new ChatGroq({
-    model: "gpt-oss-20b",
+    model: "openai/gpt-oss-20b",
     apiKey: config.GROQ_API_KEY
 }); 
 
