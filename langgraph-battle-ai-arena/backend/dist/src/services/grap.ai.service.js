@@ -1,5 +1,5 @@
 import { StateSchema, StateGraph, START, END } from "@langchain/langgraph";
-import { cohereModel, grogModel, openAiModel, } from "../services/models.service.js";
+import { cohereModel, grogModel, cloudflareModel, } from "../services/models.service.js";
 import { createAgent, providerStrategy, HumanMessage } from "langchain";
 import z from "zod";
 const State = new StateSchema({
@@ -26,7 +26,7 @@ const solutionNode = async (state) => {
 const judgeNode = async (state) => {
     const { problem, solution_1, solution_2 } = state;
     const judge = createAgent({
-        model: openAiModel,
+        model: cloudflareModel,
         responseFormat: providerStrategy(z.object({
             solution_1_score: z.number().min(0).max(10),
             solution_2_score: z.number().min(0).max(10),
