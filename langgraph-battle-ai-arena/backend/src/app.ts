@@ -1,5 +1,5 @@
 import express from 'express'
-import runGraph from "./services/grap.ai.service.js"
+import runArenaGraph from "./services/graph.ai.service.js"
 import cors from "cors"
 
 const app = express()
@@ -23,7 +23,7 @@ app.post("/invoke", async (req, res) => {
             return
         }
 
-        const result = await runGraph(input)
+        const result = await runArenaGraph(input)
 
         res.status(200).json({
             message: "Graph executed successfully",

@@ -1,11 +1,12 @@
 {
-  "name": "langgraph-battle-ai-arena",
+  "name": "langgraph-battle-ai-arena-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx server.ts"
+    "dev": "tsx server.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
